@@ -173,6 +173,9 @@ services:
       - TZ=UTC
     volumes:
       - /mnt/NAS-Overig/prowlarr-config:/config
+    ## Uncomment below ports if VPN is disabled.
+    # ports:
+    #   - 9696:9696
     restart: unless-stopped
 
   jellyfin:
