@@ -74,9 +74,9 @@ services:
       - 51413:51413
       - 51413:51413/udp
     volumes:
-      - tx-config:/config
-      - torrent-downloads:/downloads
-      - tx-watch:/watch
+      - /mnt/NAS-Overig/tx-config:/config
+      - /mnt/NAS-Overig/torrent-downloads:/downloads
+      - /mnt/NAS-Overig/tx-watch:/watch
     restart: "unless-stopped"
 
   ## Default credentials - Username: admin password: adminadmin ##
@@ -97,8 +97,8 @@ services:
       - TZ=UTC
       - WEBUI_PORT=5080
     volumes:
-      - qbittorrent-config:/config
-      - torrent-downloads:/downloads
+      - /mnt/NAS-Overig/qbittorrent-config:/config
+      - /mnt/NAS-Overig/torrent-downloads:/downloads
 
     ## Uncomment below ports if VPN is disabled.
     # ports:
@@ -119,8 +119,8 @@ services:
     ports:
       - 7878:7878
     volumes:
-      - radarr-config:/config
-      - torrent-downloads:/downloads
+      - /mnt/NAS-Overig/radarr-config:/config
+      - /mnt/NAS-Overig/torrent-downloads:/downloads
     restart: "unless-stopped"
 
   sonarr:
@@ -134,8 +134,8 @@ services:
       - PGID=1000
       - TZ=UTC
     volumes:
-      - sonarr-config:/config
-      - torrent-downloads:/downloads
+      - /mnt/NAS-Overig/sonarr-config:/config
+      - /mnt/NAS-Overig/torrent-downloads:/downloads
     ports:
       - 8989:8989
     restart: unless-stopped
@@ -151,8 +151,8 @@ services:
       - PGID=1000
       - TZ=UTC
     volumes:
-      - jackett-config:/config
-      - jackett-blackhole:/downloads
+      - /mnt/NAS-Overig/jackett-config:/config
+      - /mnt/NAS-Overig/jackett-blackhole:/downloads
     ports:
       - 9117:9117
     restart: unless-stopped
@@ -172,7 +172,7 @@ services:
       - PGID=1000
       - TZ=UTC
     volumes:
-      - prowlarr-config:/config
+      - /mnt/NAS-Overig/prowlarr-config:/config
     restart: unless-stopped
 
   jellyfin:
@@ -186,8 +186,8 @@ services:
       - PGID=1000
       - TZ=UTC
     volumes:
-      - jellyfin-config:/config
-      - torrent-downloads:/data
+      - /mnt/NAS-Overig/jellyfin-config:/config
+      - /mnt/NAS-Overig/torrent-downloads:/data
   # devices:
    #  - /dev/videoN:/dev/videoN # Mount GPU device 
     ports:
@@ -195,18 +195,6 @@ services:
       - 7359:7359/udp
       - 8920:8920
     restart: unless-stopped
-
-volumes:
-  torrent-downloads:
-  radarr-config:
-  sonarr-config:
-  jackett-config:
-  jackett-blackhole:
-  prowlarr-config:
-  jellyfin-config:
-  qbittorrent-config:
-  tx-config:
-  tx-watch:
 
 networks:
   mynetwork:
