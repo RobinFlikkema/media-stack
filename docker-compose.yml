@@ -207,7 +207,7 @@ services:
       - PGID=1000
       - TZ=UTC
     volumes:
-      - /mnt/NAS-Overig/jellyfin-config:/config
+      - jellyfin-config:/config
       - /mnt/NAS-Overig/torrent-downloads:/data
   # devices:
    #  - /dev/videoN:/dev/videoN # Mount GPU device 
@@ -226,6 +226,7 @@ volumes:
   radarr-config:
   nginx-config:
   letsencrypt:
+  jellyfin-config:
 
 networks:
   media-stack-network:
