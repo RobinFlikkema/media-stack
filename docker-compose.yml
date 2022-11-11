@@ -1,6 +1,18 @@
 version: "3.9"
 name: media-stack
 services:
+  nginx:
+    image: nginx:1.23.1-alpine
+    container_name: nginx
+    networks:
+      - media-stack-network
+    volumes:
+      - nginx-config:/etc/nginx
+      - letsencrypt:/etc/letsencrypt
+    ports:
+      - 80:80
+      - 443:443
+    restart: unless-stopped
   vpn:
   ## Read https://github.com/qdm12/gluetun/wiki for details on configuring VPN for different service providers.
     profiles: ["vpn", "stack-2"]
@@ -208,6 +220,8 @@ volumes:
   sonarr-config:
   prowlarr-config:
   radarr-config:
+  nginx-config:
+  letsencrypt:
 
 networks:
   media-stack-network:
