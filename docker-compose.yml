@@ -61,6 +61,8 @@ services:
       - 6881:6881/udp
       # prowlarr ports
       - 9696:9696
+      # flaresolverr ports
+      - 8192:8192
       # Transmission ports. Uncomment below if Transmission is used with VPN
       # - 9091:9091
       # - 51413:51413
